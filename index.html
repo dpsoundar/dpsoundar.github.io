@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<HTML>
+	<head>
+		<title> My First App </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<style>
+		#giftimg1 {
+		min-height:150px;
+		min-width:250px;
+		height:80vh;
+		width:75vw;
+		padding:0;
+		margin:0;
+		}
+		
+		.giftimg2 {
+		min-height:150px;
+		min-width:250px;
+		height:40vh;
+		width:80vw;
+		padding:0;
+		margin:0;
+		align:center;
+		}
+		
+		#video1 {
+		border-radius:100%;
+		position:absolute;
+		top:10px;
+		left:150px;
+		width:115px;
+		height:500px;
+		align:center;
+		}
+		</style>
+	</head>
+	<body>
+	<div data-role="page" id="mainpage" >
+	<H2> Gift </H2>
+	<article data-role="content">
+		<ul style="list-style-type:none">
+			<li>
+				<a href="#secondpage"> first </a> <br>
+				<div id="divgiftimg1" >
+				<img src="./images/Gold_Gift_Box_PNG.png" alt="It's YOU" id="giftimg1" />
+				</div>
+			</li>
+		</ul>
+	</article>
+	</div>
+	
+	<div data-role="page" id="secondpage" >
+	<H2> Gift </H2>
+	<article data-role="content">
+	<a href="#mainpage"> Back </a> <br>
+		<ul style="list-style-type:none">
+			<li>
+			<div id="divmirrorimg1" >
+				<img src="./images/rect_mirror1.png" alt="It's YOU" position=relative id="mirrorimg1" class="giftimg2" />
+				<video id="video1" autoplay> </video>
+				<script>
+					var var_video = document.getElementById('video1');
+					
+					if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+					  navigator.mediaDevices.getUserMedia({video: {facingMode:"user"}}).then(function(stream) {
+					  var_video.srcObject = stream;
+					  var_video.play();
+					} );
+					}
+					
+				</script>
+						
+			</div>
+			</li>
+			<li>
+				<div id="divgiftimg2" align=center>
+				<img src="./images/opened_gift_box4.jpg" alt="It's YOU" id="giftimg2" width=150px height=175px />
+				</div>
+			</li>
+		</ul>
+	</article>
+	</div>
+	
+	</body>
+
+</HTML>
