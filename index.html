@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<HTML>
+	<head>
+		<title> A Perfect Gift for You </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<style>
+		#giftimg1 {
+		min-height:150px;
+		min-width:250px;
+		height:80vh;
+		width:75vw;
+		padding:0;
+		margin:0;
+		}
+		.giftimg2 {
+		height:250px;
+		width:250px;
+		padding:0;
+		margin:0;
+		align:center;
+		position:relative;
+		z-index:1;
+		}
+		.video1 {
+		position:absolute;
+		top:74px;
+		left:75px;
+		width:102px;
+		height:125px;
+		align:center;
+		z-index:2;
+		padding:0;
+		margin:0;
+		border-radius:10%;
+		transform:scale(1, 2.4);
+		}
+		</style>
+				
+
+	</head>
+	<body>
+		<div data-role="page" id="mainpage" >
+			<center> <H2> Gift </H2> </center>
+			<article data-role="content">
+				<ul style="list-style-type:none">
+					<li>
+						<center><a href="#secondpage" onclick="startCam()"> Click Here to Open </a> </center> <br>
+						<div id="divgiftimg1" >
+							<img src="./images/Gold_Gift_Box_PNG.png" alt="It's YOU" id="giftimg1" />
+						</div>
+					</li>
+				</ul>
+			</article>
+		</div>
+		
+		<div data-role="page" id="secondpage" >
+	<center><H2> Gift </H2> </center>
+	<article data-role="content">
+	<center><a href="#mainpage" onclick="stopCamera()" > Back </a> </center> <br>
+		<ul style="list-style-type:none">
+			<li>
+			<div id="divmirrorimg1" class="giftimg2" >
+				<img src="./images/rect_mirror1.png" alt="It's YOU" id="mirrorimg1" class="giftimg2" />
+				<video id="video1" class="video1" autoplay> </video>
+				<script>
+					var var_video = document.getElementById('video1');
+					var streamcopy;
+				    function startCam() {
+						if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+							navigator.mediaDevices.getUserMedia({video: {facingMode:"user"}}).then(function(stream) {
+							var_video.srcObject = stream;
+							streamcopy = stream;
+							var_video.play();
+						} );
+						}
+					}
+					  
+					function stopCamera() {
+							streamcopy.getVideoTracks()[0].stop();
+						/*	var_video.pause();
+							var_video.srcObject = null; */
+					}
+				</script>
+				</div>
+			</li>
+			<li>
+				<div id="divgiftimg2">
+				<img src="./images/opened_gift_box4.jpg" alt="It's YOU" align=center width=150px height=100px />
+				</div>
+			</li>
+		</ul>
+	</article>
+	
+	<Button id="pp" type="button" onclick="pauseCamera()"> Pause </button>
+					  
+				<script>
+						function pauseCamera() {
+							var_video.pause();
+							/* var_video.srcObject = null; */
+						}
+
+				</script>
+	</div>
+	
+	</body>
+</HTML>
